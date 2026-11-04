@@ -2,6 +2,8 @@
 
 React로 페이지를 나누고 서버 데이터를 표시하는 흐름을 익히기 위한 작은 게시판입니다. Vite, React JavaScript, React Router를 사용하고, 스타일은 일반 CSS로 작성합니다.
 
+UI는 [RealWorld](https://github.com/realworld-apps/realworld) 프로젝트의 [Conduit 데모](https://demo.realworld.show/)를 참고했습니다.
+
 ## 실행
 
 ```sh
