@@ -15,21 +15,18 @@ function BackLink() {
 
 function PostDetailPage() {
   const { id } = useParams();
-  const [result, setResult] = useState({
-    id: null,
-    post: null,
-    isError: false,
-  });
-  const isLoading = result.id !== id;
-  const { post, isError } = result;
+  const [post, setPost] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     async function loadPost() {
       try {
-        const post = await getPost(id);
-        setResult({ id, post, isError: false });
+        setPost(await getPost(id));
       } catch {
-        setResult({ id, post: null, isError: true });
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
       }
     }
 
@@ -41,7 +38,7 @@ function PostDetailPage() {
       <header className="post-banner">
         <div className="container">
           <BackLink />
-          {!isLoading && post && <h1>{post.title}</h1>}
+          {post && <h1>{post.title}</h1>}
         </div>
       </header>
       <div className="container post-content">
