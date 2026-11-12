@@ -2,23 +2,12 @@ import { useEffect, useState } from "react";
 import { getPost } from "../api/posts.js";
 import { Link, useParams } from "react-router";
 import Comments from "../components/Comments.jsx";
+import backArrow from "../assets/back-arrow.svg";
 
 function BackLink() {
   return (
     <Link to="/" className="back-link">
-      <svg
-        aria-hidden="true"
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M10 3 5 8l5 5" />
-      </svg>
+      <img src={backArrow} alt="" width="16" height="16" />
       게시글 목록
     </Link>
   );
