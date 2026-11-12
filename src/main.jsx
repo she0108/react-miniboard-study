@@ -4,6 +4,11 @@ import { RouterProvider } from "react-router/dom";
 import router from "./routes/router.jsx";
 import "./index.css";
 
+if (import.meta.env.DEV) {
+  const { worker } = await import("./mocks/browser.js");
+  await worker.start({ onUnhandledRequest: "bypass" });
+}
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router} />
