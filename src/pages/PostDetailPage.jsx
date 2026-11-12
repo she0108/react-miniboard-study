@@ -15,27 +15,25 @@ function BackLink() {
 
 function PostDetailPage() {
   const { id } = useParams();
-  const [result, setResult] = useState({ id: null, post: null, isError: false });
+  const [result, setResult] = useState({
+    id: null,
+    post: null,
+    isError: false,
+  });
   const isLoading = result.id !== id;
   const { post, isError } = result;
 
   useEffect(() => {
-    // 뒤로 가기로 id가 바뀌면 이전 요청의 응답은 무시한다.
-    let ignore = false;
-
     async function loadPost() {
       try {
         const post = await getPost(id);
-        if (!ignore) setResult({ id, post, isError: false });
+        setResult({ id, post, isError: false });
       } catch {
-        if (!ignore) setResult({ id, post: null, isError: true });
+        setResult({ id, post: null, isError: true });
       }
     }
 
     loadPost();
-    return () => {
-      ignore = true;
-    };
   }, [id]);
 
   if (!isLoading && !isError && post) {
