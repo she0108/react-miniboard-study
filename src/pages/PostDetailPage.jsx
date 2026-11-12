@@ -36,41 +36,48 @@ function PostDetailPage() {
     loadPost();
   }, [id]);
 
-  if (!isLoading && !isError && post) {
-    return (
-      <article>
-        <header className="post-banner">
-          <div className="container">
-            <BackLink />
-            <h1>{post.title}</h1>
-          </div>
-        </header>
-        <div className="container post-content">
-          <p className="post-body">{post.body}</p>
-          <Comments key={post.id} postId={post.id} />
+  return (
+    <article>
+      <header className="post-banner">
+        <div className="container">
+          <BackLink />
+          {!isLoading && post && <h1>{post.title}</h1>}
         </div>
-      </article>
+      </header>
+      <div className="container post-content">
+        <PostContent isLoading={isLoading} isError={isError} post={post} />
+      </div>
+    </article>
+  );
+}
+
+function PostContent({ isLoading, isError, post }) {
+  if (isLoading) {
+    return <p className="status">게시글을 불러오는 중입니다.</p>;
+  }
+
+  if (isError) {
+    return (
+      <p className="error">
+        게시글을 불러오지 못했습니다. 잠시 후 다시 시도해주세요.
+      </p>
+    );
+  }
+
+  if (!post) {
+    return (
+      <div className="not-found">
+        <h1>게시글이 없습니다</h1>
+        <p>목록에서 다른 게시글을 선택해주세요.</p>
+      </div>
     );
   }
 
   return (
-    <section className="container status-page">
-      <BackLink />
-      {isLoading ? (
-        <p className="status">
-          게시글을 불러오는 중입니다.
-        </p>
-      ) : isError ? (
-        <p className="error">
-          게시글을 불러오지 못했습니다. 잠시 후 다시 시도해주세요.
-        </p>
-      ) : (
-        <div className="not-found">
-          <h1>게시글이 없습니다</h1>
-          <p>목록에서 다른 게시글을 선택해주세요.</p>
-        </div>
-      )}
-    </section>
+    <>
+      <p className="post-body">{post.body}</p>
+      <Comments key={post.id} postId={post.id} />
+    </>
   );
 }
 
