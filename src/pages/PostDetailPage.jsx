@@ -57,11 +57,11 @@ function PostDetailPage() {
     <section className="container status-page">
       <BackLink />
       {isLoading ? (
-        <p role="status" className="status">
+        <p className="status">
           게시글을 불러오는 중입니다.
         </p>
       ) : isError ? (
-        <p role="alert" className="error">
+        <p className="error">
           게시글을 불러오지 못했습니다. 잠시 후 다시 시도해주세요.
         </p>
       ) : (

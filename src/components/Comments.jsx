@@ -24,11 +24,11 @@ function Comments({ postId }) {
     <section aria-labelledby="comments-title" className="comments">
       <h2 id="comments-title">댓글</h2>
       {isLoading ? (
-        <p role="status" className="status">
+        <p className="status">
           댓글을 불러오는 중입니다.
         </p>
       ) : isError ? (
-        <p role="alert" className="error">
+        <p className="error">
           댓글을 불러오지 못했습니다. 잠시 후 다시 시도해주세요.
         </p>
       ) : comments.length === 0 ? (
