@@ -28,7 +28,7 @@ function HomePage() {
         <h1>mini board</h1>
         <p>글을 읽고 댓글을 살펴보는 작은 게시판.</p>
       </section>
-      <section aria-label="게시글 목록" className="container post-section">
+      <section className="container post-section">
         <PostList isLoading={isLoading} isError={isError} posts={posts} />
       </section>
     </>

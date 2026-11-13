@@ -22,8 +22,8 @@ function Comments({ postId }) {
   }, [postId]);
 
   return (
-    <section aria-labelledby="comments-title" className="comments">
-      <h2 id="comments-title">댓글</h2>
+    <section className="comments">
+      <h2>댓글</h2>
       <CommentList
         isLoading={isLoading}
         isError={isError}
