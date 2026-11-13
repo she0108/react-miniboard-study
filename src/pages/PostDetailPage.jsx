@@ -22,7 +22,8 @@ function PostDetailPage() {
   useEffect(() => {
     async function loadPost() {
       try {
-        setPost(await getPost(id));
+        const data = await getPost(id);
+        setPost(data);
       } catch {
         setIsError(true);
       } finally {

@@ -9,7 +9,8 @@ function Comments({ postId }) {
   useEffect(() => {
     async function loadComments() {
       try {
-        setComments(await getComments(postId));
+        const data = await getComments(postId);
+        setComments(data);
       } catch {
         setIsError(true);
       } finally {

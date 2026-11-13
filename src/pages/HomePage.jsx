@@ -10,7 +10,8 @@ function HomePage() {
   useEffect(() => {
     async function loadPosts() {
       try {
-        setPosts(await getPosts());
+        const data = await getPosts();
+        setPosts(data);
       } catch {
         setIsError(true);
       } finally {
